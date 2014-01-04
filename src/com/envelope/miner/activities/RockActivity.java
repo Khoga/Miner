@@ -48,7 +48,7 @@ public class RockActivity extends ParentActivity {
          
     }
     
-    public void LoadValues()
+    public void LoadValues()  //pobieranie wszystkich potrzebnych wartosci z Minera
     {
     	currentGold = miner.Capitol.Currency.Amount;
     	incomeGold = miner.Capitol.Income.Amount ;
@@ -56,7 +56,7 @@ public class RockActivity extends ParentActivity {
     	incomePremium = miner.Capitol.PremiumIncome.Amount;
     }
     
-    public void setGoldValues()
+    public void setGoldValues()  // wypisywanie na gorej belce aktualnego stanu dubr doczesnych
     {
     	LoadValues();
     	currentGoldTV.setText(currentGold + "" );
@@ -65,13 +65,13 @@ public class RockActivity extends ParentActivity {
     	incomePremiumTV.setText(incomePremium + "");
     }
 
-    public void RockIVClick(View v)
+    public void RockIVClick(View v) // Click na skale
     {
         miner.Capitol.Currency.Amount += miner.University.Pickaxe.UsePickaxe();
         setGoldValues();
     }
     
-    public void FillRightLayout()
+    public void FillRightLayout() // wypelnianie prawej czesci
     {
     	TextView tv = (TextView) findViewById(R.id.NameTV);
         tv.setText(miner.Name);

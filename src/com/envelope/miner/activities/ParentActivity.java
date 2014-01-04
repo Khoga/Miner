@@ -28,6 +28,13 @@ public class ParentActivity extends Activity
 		prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 		editor = prefs.edit();
 		
+		/*
+		 *  Wszystkie Aktywnoœci dziedzicza po ParentActivity, dlatego tez maja dostep do pola MINER - 
+		 *  ono zawiera wszystko.
+		 * 
+		 */
+		
+		
 		LoadAllData();
 		
 		Timer t = new Timer();

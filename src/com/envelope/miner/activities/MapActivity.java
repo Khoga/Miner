@@ -38,11 +38,16 @@ public class MapActivity extends ParentActivity {
         context = getApplicationContext();
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor = prefs.edit();
-
-        checker();
+/*
+ * SharedPreferences sluzy do zapamietywania zmiennych nawet po zamknieciu aplikacji 
+ * -> jak zapisac patrz: ParentActivity -> AutoSave()
+ * -> jak odczytac patrz: ParentActivity -> LoadAllData() 
+ * 
+ */
+        checker();  // sprawdza czy jest to nasze pierwsze logowanie
     }
 
-    private void FirstLoginDialog()
+    private void FirstLoginDialog()  //Nasze pierwsze logowanie
     {
     	dialog = new Dialog(MapActivity.this);
 
@@ -66,7 +71,7 @@ public class MapActivity extends ParentActivity {
             		String nick = NickET.getText().toString();
             		String osobaPolecajaca = OsobaPolecajacaET.getText().toString();
             		
-            		miner = new Miner(nick);
+            		miner = new Miner(nick);  // Tworzenie nowego Gracza
             		Gson gson = new Gson();
             	    String json = gson.toJson(miner);
             	    editor.putString("Miner", json);
@@ -88,7 +93,7 @@ public class MapActivity extends ParentActivity {
     	else FillRightLayout();
     }
     
-    public void FillRightLayout()
+    public void FillRightLayout() // zapisywanie informacji na layoucie po prawej 
     {
     	TextView tv = (TextView) findViewById(R.id.NameTV);
         tv.setText(miner.Name);
@@ -96,12 +101,10 @@ public class MapActivity extends ParentActivity {
     
     
 
-    public void RockClick(View v)
+    public void RockClick(View v)  //Zmiana aktywnosci poprzez Intent
     {
         Intent intent = new Intent(MapActivity.this, RockActivity.class);
         startActivity(intent);
-
-
     }
 
 
