@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MapActivity"
+    tools:ignore="MergeRootFrame"
+    android:weightSum="100"
+    android:orientation="horizontal">
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/MainRockLayout"
+        android:layout_weight="70"
+        android:background="#FFF0FF90"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:id="@+id/currentGoldLayout"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="0"
+                android:id="@+id/CurrentGoldTV" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="0"
+                android:id="@+id/IncomeGoldTV" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="0"
+                android:id="@+id/CurrentPremiumTV" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="0"
+                android:id="@+id/IncomePremiumTV" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/RockIV"
+            android:onClick="RockIVClick"
+            android:src="@drawable/rock"
+
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/RightRockLayout"
+        android:layout_height="match_parent"
+        android:layout_weight="30"
+        android:background="#FF00FF90"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/NameTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        </LinearLayout>
+
+</LinearLayout>
+
+
+
+
