@@ -34,7 +34,7 @@ public class MapActivity extends ParentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_activity);
-
+     
         context = getApplicationContext();
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor = prefs.edit();
@@ -105,6 +105,7 @@ public class MapActivity extends ParentActivity {
     {
         Intent intent = new Intent(MapActivity.this, RockActivity.class);
         startActivity(intent);
+        finish();
     }
 
 

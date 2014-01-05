@@ -3,93 +3,120 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context=".MapActivity"
-    tools:ignore="MergeRootFrame"
-    android:weightSum="100"
-    android:orientation="horizontal">
-
-
+    tools:ignore="MergeRootFrame" >
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
         android:id="@+id/MainRockLayout"
-        android:layout_weight="70"
-        android:background="#FFF0FF90"
+        android:layout_width="800dp"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:background="#FFF0FF90" >
 
         <LinearLayout
             android:id="@+id/currentGoldLayout"
+            android:layout_width="600dp"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:orientation="horizontal">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="0"
-                android:id="@+id/CurrentGoldTV" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/CurrentGoldTV"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="0"
-                android:id="@+id/IncomeGoldTV" />
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/IncomeGoldTV"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="0"
-                android:id="@+id/CurrentPremiumTV" />
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/CurrentPremiumTV"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="0"
-                android:id="@+id/IncomePremiumTV" />
+                android:text="0" />
+
+            <TextView
+                android:id="@+id/IncomePremiumTV"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="0" />
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/RockIV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/RockIV"
-            android:onClick="RockIVClick"
-            android:src="@drawable/rock"
-
+            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:onClick="RockIVClick"
+            android:src="@drawable/rock" />
 
+        <Button
+            android:id="@+id/resetAllBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/currentGoldLayout"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="25dp"
+            android:onClick="ResetAllClick"
+            android:text="Reset All" />
+
+        <TextView
+            android:id="@+id/CoolDownTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/RockIV"
+            android:layout_alignRight="@+id/RockIV"
+            android:layout_below="@+id/RockIV"
+            android:gravity="center"
+            android:layout_marginTop="32dp"
+            android:text="CD"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
     </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/RightRockLayout"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="30"
         android:background="#FF00FF90"
-        android:layout_width="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/NameTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="center"
             android:text="TextView" />
 
-        </LinearLayout>
+        <Button
+            android:id="@+id/pickaxeUpgradeBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="PickaxeUpgradeClick"
+            android:text="Upgrade pickaxe" />
+
+        <Button
+            android:id="@+id/workerUpgradeBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="WorkerUpgradeClick"
+            android:text="Upgrade Worker" />
+
+    </LinearLayout>
 
 </LinearLayout>
-
-
-
-

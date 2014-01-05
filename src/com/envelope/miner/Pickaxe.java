@@ -6,6 +6,7 @@ package com.envelope.miner;
 public class Pickaxe {
     public int Level;
     public double Cooldown;
+    private double base = 10;
     public double CurrencyPerClick; // przerobione z: public Currency CurrencyPerClick;
 
     public Pickaxe()
@@ -15,11 +16,18 @@ public class Pickaxe {
         CurrencyPerClick = 1;  //z: CurrencyPerClick.Amount = 1;
     }
 
-    public void Upgrade()
+    public double Upgrade()
     {
         Level++;
-        //Cooldown
-        //CurrencyPerClick
+        CurrencyPerClick += 100;
+        Cooldown += 0.1;
+        return 1;
+    }    
+    
+    public double UpgradeCost(int lvl) // koszty upgrade'a -> potrzebna zmiana TODO
+    {
+    	if(lvl == 1) return base;
+    	else return UpgradeCost(lvl - 1) *2;
     }
 
     public double UsePickaxe()
