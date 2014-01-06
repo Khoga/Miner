@@ -85,6 +85,15 @@
             android:text="CD"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
+        <TextView
+            android:id="@+id/infoTMP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/RockIV"
+            android:layout_alignRight="@+id/resetAllBTN"
+            android:layout_marginBottom="79dp"
+            android:text="info" />
+
     </RelativeLayout>
 
     <LinearLayout

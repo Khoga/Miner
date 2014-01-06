@@ -38,22 +38,26 @@ public final class R {
         public static final int NickET=0x7f080001;
         public static final int OsobapolecajacaET=0x7f080003;
         public static final int RightMapLayout=0x7f080009;
-        public static final int RightRockLayout=0x7f080014;
+        public static final int RightRockLayout=0x7f080015;
         public static final int RockClick=0x7f080008;
         public static final int RockIV=0x7f080011;
-        public static final int action_settings=0x7f080017;
+        public static final int action_settings=0x7f08001a;
         public static final int container=0x7f080006;
         public static final int currentGoldLayout=0x7f08000c;
-        public static final int pickaxeUpgradeBTN=0x7f080015;
+        public static final int infoTMP=0x7f080014;
+        public static final int pickaxeUpgradeBTN=0x7f080016;
+        public static final int poss1=0x7f080018;
+        public static final int poss2=0x7f080019;
         public static final int resetAllBTN=0x7f080012;
         public static final int textView=0x7f080000;
         public static final int textView2=0x7f080002;
-        public static final int workerUpgradeBTN=0x7f080016;
+        public static final int workerUpgradeBTN=0x7f080017;
     }
     public static final class layout {
         public static final int first_login_dialog=0x7f030000;
         public static final int map_activity=0x7f030001;
         public static final int rock_activity=0x7f030002;
+        public static final int upgrade_dialog=0x7f030003;
     }
     public static final class menu {
         public static final int main=0x7f070000;
