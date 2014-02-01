@@ -29,9 +29,13 @@
             android:screenOrientation="landscape"
             >
         </activity>
-
-
-
+        
+		<activity
+            android:name="com.envelope.miner.activities.MarketMap"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape"
+            >
+        </activity>
 
     </application>
 

@@ -98,15 +98,51 @@ public class MapActivity extends ParentActivity {
     	TextView tv = (TextView) findViewById(R.id.NameTV);
         tv.setText(miner.Name);
     }
+    
+    public void MarketClick(View v)
+    {
+    	  Intent intent = new Intent(MapActivity.this, MarketMap.class);
+          startActivity(intent);
+          finish();
+    }
+    public void UniversityClick(View v)
+    {
+    	dialog = new Dialog(MapActivity.this);
 
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.university_dialog);
+        dialog.setCancelable(true);
+
+        dialog.show();
+    }
+    public void CapitolClick(View v)
+    {
+    	dialog = new Dialog(MapActivity.this);
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.capitol_dialog);
+        dialog.setCancelable(true);
+
+        dialog.show();
+    }
+    public void ForgeClick(View v)
+    {
+    	dialog = new Dialog(MapActivity.this);
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.forge_dialog);
+        dialog.setCancelable(true);
+
+        dialog.show();
+    }
+    
     public void RockClick(View v)  //Zmiana aktywnosci poprzez Intent
     {
         Intent intent = new Intent(MapActivity.this, RockActivity.class);
         startActivity(intent);
         finish();
     }
-
-
-
-
 }

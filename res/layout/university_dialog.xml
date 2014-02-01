@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal">
+    
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:weightSum="99"
+        android:background="#FFF0FF90"
+        >
+        
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="33"
+        android:weightSum="20"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/ForgeClick"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:onClick="ForgeClick"
+            android:text="Forge" />
+
+        <Button
+            android:id="@+id/MarketClick"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="MarketClick"
+            android:layout_weight="10"
+            android:text="Market" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+         android:layout_weight="33"  >
+
+       <Button
+            android:id="@+id/ForgeClick"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:onClick="ForgeClick"
+            android:text="Forge" />
+
+        <Button
+            android:id="@+id/MarketClick"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="MarketClick"
+            android:layout_weight="10"
+            android:text="Market" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+         android:layout_weight="33"  >
+
+       <Button
+            android:id="@+id/ForgeClick"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:onClick="ForgeClick"
+            android:text="Forge" />
+
+        <Button
+            android:id="@+id/MarketClick"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:onClick="MarketClick"
+            android:layout_weight="10"
+            android:text="Market" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</LinearLayout>
+

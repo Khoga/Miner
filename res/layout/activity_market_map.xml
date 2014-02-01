@@ -7,12 +7,13 @@
     tools:context=".MapActivity"
     tools:ignore="MergeRootFrame" >
     
-    <LinearLayout
+   <LinearLayout
         android:layout_width="400dp"
         android:layout_height="match_parent"
         android:id="@+id/MainMapLayout"
         android:orientation="vertical"
-        android:weightSum="99"
+        
+        android:weightSum="66"
         android:background="#FFF0FF90"
         >
 
@@ -24,20 +25,20 @@
         android:layout_weight="33" >
 
         <Button
-            android:id="@+id/ForgeClick"
+            android:id="@+id/OfflineMarketClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="50dp"
-            android:onClick="ForgeClick"
-            android:text="Forge" />
+            android:onClick="OfflineMarketClick"
+            android:text="OfflineMarket" />
 
         <Button
-            android:id="@+id/MarketClick"
+            android:id="@+id/OnlineMarketClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:onClick="MarketClick"
-            android:text="Market" />
+            android:onClick="OnlineMarketClick"
+            android:text="OnlineMarket" />
 
     </LinearLayout>
 
@@ -48,39 +49,16 @@
          android:layout_weight="33"  >
 
         <Button
-            android:id="@+id/CapitolClick"
+            android:id="@+id/PremiumStoreClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="CapitolClick"
-            android:text="Capitol" />
+            android:onClick="PremiumStoreClick"
+            android:text="PremiumStore" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-         android:layout_weight="33"  >
-
-        <Button
-            android:id="@+id/RockClick"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="150dp"
-            android:onClick="RockClick"
-            android:text="Rock" />
-
-        <Button
-            android:id="@+id/UniversityClick"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:onClick="UniversityClick"
-            android:text="University" />
-    </LinearLayout>
-</LinearLayout>  
+</LinearLayout>
+    
      <LinearLayout
-         
         android:id="@+id/RightMapLayout"
         android:layout_height="match_parent"
        android:layout_width="match_parent"
@@ -97,4 +75,5 @@
 
         </LinearLayout>
 </LinearLayout>
+
 
