@@ -42,14 +42,16 @@ public class ParentActivity extends Activity
 		 */
 		
 		Log.i("cykl Parent", "onCreate");
+		
 		obliczenia = new Obliczenia();
 		
-		LoadAllData();
-		
-		AutoSave();
-		
-		AutoConvertIncomeToGold();
-		
+			LoadAllData();
+		if(miner != null)
+		{	
+			AutoSave();
+			
+			AutoConvertIncomeToGold();
+		}
 	}
 	
 	public void AutoConvertIncomeToGold()
@@ -123,8 +125,10 @@ public class ParentActivity extends Activity
 	    editor.commit();
 	    Log.i("cykl Parent", "onDestroy");
 	    
-	    AutoConvertIncomeToGoldTimer.cancel();
-	    AutoSaveTimer.cancel();
+	    if(AutoConvertIncomeToGoldTimer != null)
+	    	AutoConvertIncomeToGoldTimer.cancel();
+	    if(AutoSaveTimer != null)
+	    	AutoSaveTimer.cancel();
 		super.onDestroy();
 	}
 }

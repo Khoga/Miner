@@ -152,11 +152,11 @@ public class RockActivity extends ParentActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				double cena = miner.University.Pickaxe.UpgradeCost(miner.University.Pickaxe.getLeavel()+1);
-				int possibility1 = miner.University.Pickaxe.possibility1;
+
 		    	if(miner.Capitol.Currency.Amount >= cena)
 		    	{
 		    		miner.Capitol.Currency.Amount -= cena;
-		    		miner.University.Pickaxe.Upgrade(possibility1);
+		    		miner.University.Pickaxe.Upgrade(1);
 		    	}
 		    	else Toast.makeText(getApplicationContext(), "Brak surowców!", Toast.LENGTH_LONG).show();
 		    	dialog.cancel();
@@ -168,11 +168,11 @@ public class RockActivity extends ParentActivity {
 			@Override
 			public void onClick(View v) {
 				double cena = miner.University.Pickaxe.UpgradeCost(miner.University.Pickaxe.getLeavel()+1);
-				int possibility2 = miner.University.Pickaxe.possibility2;
+
 		    	if(miner.Capitol.Currency.Amount >= cena)
 		    	{
 		    		miner.Capitol.Currency.Amount -= cena;
-		    		miner.University.Pickaxe.Upgrade(possibility2);
+		    		miner.University.Pickaxe.Upgrade(2);
 		    	}
 		    	else Toast.makeText(getApplicationContext(), "Brak surowców!", Toast.LENGTH_LONG).show();
 		    	dialog.cancel();
@@ -201,10 +201,8 @@ public class RockActivity extends ParentActivity {
     {
     	LoadValues();
     	
-    	int possibility1 = miner.University.Pickaxe.possibility1;
-		int possibility2 = miner.University.Pickaxe.possibility2;
 		TextView info = (TextView) findViewById(R.id.infoTMP);
-		info.setText("poss1: " + possibility1 + "\r\n" + "poss2: " + possibility2 + "\r\n" + "GpC: " + 
+		info.setText("GpC: " + 
 	    		miner.University.Pickaxe.CurrencyPerClick + "\r\n" + "cd: " + miner.University.Pickaxe.Cooldown);
 		
     	currentGoldTV.setText(currentGold + "" );
@@ -223,6 +221,7 @@ public class RockActivity extends ParentActivity {
     public void FillRightLayout() // wypelnianie prawej czesci
     {
     	TextView tv = (TextView) findViewById(R.id.NameTV);
+    	miner.Name ="jarek";
         tv.setText(miner.Name);
         
         double cena = miner.University.Pickaxe.UpgradeCost(miner.University.Pickaxe.getLeavel()+1);

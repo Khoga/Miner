@@ -98,8 +98,6 @@ public class MapActivity extends ParentActivity {
     	TextView tv = (TextView) findViewById(R.id.NameTV);
         tv.setText(miner.Name);
     }
-    
-    
 
     public void RockClick(View v)  //Zmiana aktywnosci poprzez Intent
     {

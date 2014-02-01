@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:id="@+id/MainRockLayout"
-        android:layout_width="800dp"
+        android:layout_width="500dp"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -89,9 +89,9 @@
             android:id="@+id/infoTMP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/RockIV"
+			android:layout_below="@+id/currentGoldLayout"
             android:layout_alignRight="@+id/resetAllBTN"
-            android:layout_marginBottom="79dp"
+            android:layout_marginTop="20dp"
             android:text="info" />
 
     </RelativeLayout>
