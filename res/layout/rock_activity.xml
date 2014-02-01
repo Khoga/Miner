@@ -114,17 +114,24 @@
 
         <Button
             android:id="@+id/pickaxeUpgradeBTN"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="PickaxeUpgradeClick"
             android:text="Upgrade pickaxe" />
 
         <Button
             android:id="@+id/workerUpgradeBTN"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="WorkerUpgradeClick"
             android:text="Upgrade Worker" />
+
+        <Button
+            android:id="@+id/wellUpgradeBTN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="WellUpgradeClick"
+            android:text="Upgrade well" />
 
     </LinearLayout>
 

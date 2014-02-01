@@ -32,11 +32,12 @@ public class Pickaxe {
     public void Upgrade1()
     {
     	CurrencyPerClick += 2;
+    	Cooldown += (Cooldown/20);
     }
     
     public void Upgrade2()
     {
-    	Cooldown -= (Cooldown/10);
+    	Cooldown -= (Cooldown/20);
     }
     
     public double UpgradeCost(int lvl) // koszty upgrade'a -> potrzebna zmiana TODO

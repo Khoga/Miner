@@ -41,16 +41,20 @@ public final class R {
         public static final int RightRockLayout=0x7f080015;
         public static final int RockClick=0x7f080008;
         public static final int RockIV=0x7f080011;
-        public static final int action_settings=0x7f08001a;
+        public static final int UpgradeInfo=0x7f08001a;
+        public static final int UpgradeName=0x7f080019;
+        public static final int UpgradeRequirement=0x7f08001b;
+        public static final int action_settings=0x7f08001e;
         public static final int container=0x7f080006;
         public static final int currentGoldLayout=0x7f08000c;
         public static final int infoTMP=0x7f080014;
         public static final int pickaxeUpgradeBTN=0x7f080016;
-        public static final int poss1=0x7f080018;
-        public static final int poss2=0x7f080019;
+        public static final int poss1=0x7f08001c;
+        public static final int poss2=0x7f08001d;
         public static final int resetAllBTN=0x7f080012;
         public static final int textView=0x7f080000;
         public static final int textView2=0x7f080002;
+        public static final int wellUpgradeBTN=0x7f080018;
         public static final int workerUpgradeBTN=0x7f080017;
     }
     public static final class layout {

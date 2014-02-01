@@ -1,10 +1,14 @@
 package com.envelope.miner;
 
+import java.util.Random;
+
 public class Worker {
 
 	 public int Level;
 	 public double Income;
-	private double base = 100;
+	 private double base = 20;
+	 private int doubleChance = 0;
+	 Random R ;
 
 	    public Worker()
 	    {
@@ -12,14 +16,25 @@ public class Worker {
 	        Income = 0;
 	    }
 
-	    public double Upgrade()
+	    public double Upgrade(int posibility)
 	    {
-	    	double c = 1;
-	        Level++;
-	        Income += c;
 	        
-	        return c;
+	        Level++;
+	        if     (posibility == 1) Upgrade1();
+	        else if(posibility == 2) Upgrade2(); 
+	        
+	        return 1;
 	    }    
+	    
+	    public void Upgrade1()
+	    {
+	    	Income += 1;
+	    }
+	    
+	    public void Upgrade2()
+	    {
+	    	doubleChance += 10;
+	    }
 	    
 	    public double UpgradeCost(int lvl)
 	    {
@@ -36,6 +51,13 @@ public class Worker {
 	    {
 	        return Level;
 	    }
+
+		public double WorkerDoubleChance() 
+		{
+			if(R.nextInt(100) < doubleChance) 
+				return Income;
+			else return 0;
+		}
 
 	    
 }

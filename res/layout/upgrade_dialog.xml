@@ -13,21 +13,52 @@
         android:background="#FF00FF90"
         android:weightSum="100"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/poss1"
+        <TextView
+            android:id="@+id/UpgradeName"
             android:layout_width="wrap_content"
-            android:layout_weight="50"
             android:layout_height="wrap_content"
-            android:text="possibility 1" />
+            android:layout_weight="50"
+            android:text="Name"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <Button
-            android:id="@+id/poss2"
+        <TextView
+            android:id="@+id/UpgradeInfo"
             android:layout_width="wrap_content"
-            android:layout_weight="50"
             android:layout_height="wrap_content"
-            android:text="possibility 2" />
+            android:layout_weight="50"
+            android:text="Info"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/UpgradeRequirement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:text="Requirement"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center" >
+
+            <Button
+                android:id="@+id/poss1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:text="Upgrade 1" />
+
+            <Button
+                android:id="@+id/poss2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:text="Upgrade 2" />
+
+        </LinearLayout>
 
     </LinearLayout>
     

@@ -6,6 +6,7 @@ import java.util.TimerTask;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Region;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.envelope.miner.Miner;
 import com.envelope.miner.R;
+import com.envelope.miner.Well;
 import com.envelope.miner.Worker;
 import com.envelope.miner.rest.Obliczenia;
 
@@ -29,14 +31,15 @@ public class RockActivity extends ParentActivity {
     private TextView incomeGoldTV;
     private TextView currentPremiumTV;
     private TextView incomePremiumTV;
-	private double currentGold;
-	private double incomeGold;
-	private double currentPremium;
-	private double incomePremium;
 	private Obliczenia obliczenia;
 	private Timer pickaxeCooldownTimer;
 	private Timer ValuesUpdaterTimer;
 	private Dialog dialog;
+	private Button poss1;
+	private Button poss2;
+	private TextView name;
+	private TextView info;
+	private TextView requirement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,11 +78,14 @@ public class RockActivity extends ParentActivity {
 					public void run() {
 						setGoldValues();
 						FillRightLayout();
+						
 					}
 				});
 			}
 		}, 1, 100);
     }
+    
+
     
     public void ResetAllClick(View v)  // restart wszystkiego ( do testowania )
     {
@@ -87,21 +93,8 @@ public class RockActivity extends ParentActivity {
     	miner = new Miner(s);
     	Intent intent = new Intent(RockActivity.this, RockActivity.class);
     	startActivity(intent);
-    
     }
     
-    public void LoadValues()  //pobieranie wszystkich potrzebnych wartosci z Minera
-    {
-    	currentGold = miner.Capitol.Currency.Amount;
-    	incomeGold = miner.Capitol.Income.Amount ;
-    	currentPremium = miner.Capitol.PremiumCurrency.Amount;
-    	incomePremium = miner.Capitol.PremiumIncome.Amount;
-    	
-    	currentGold = obliczenia.round(currentGold, 2);
-    	incomeGold = obliczenia.round(incomeGold, 2);
-    	currentPremium = obliczenia.round(currentPremium, 2);
-    	incomePremium = obliczenia.round(incomePremium, 2);
-    }
     
     public void setPickaxeCooldown(final double time)  // licznik cooldown'u kilofa
     {
@@ -135,6 +128,22 @@ public class RockActivity extends ParentActivity {
 		}, 1, 100);
     }
     
+    public void UpdateDialogInit(String Sname, String Sinfo, double cena, String pos1, String pos2)
+    {
+    	 poss1 = (Button) dialog.findViewById(R.id.poss1);
+		 poss2 = (Button) dialog.findViewById(R.id.poss2);
+		 name = (TextView) dialog.findViewById(R.id.UpgradeName);
+		 info = (TextView) dialog.findViewById(R.id.UpgradeInfo);
+		 requirement = (TextView) dialog.findViewById(R.id.UpgradeRequirement);
+		 
+		 name.setText(Sname);
+		 info.setText(Sinfo);
+		 requirement.setText(cena + "");
+		 poss1.setText(pos1);
+		 poss2.setText(pos2);
+    }
+
+    
     public void PickaxeUpgradeClick(View v) // upgrade kilofa
     {
 		  dialog = new Dialog(RockActivity.this);
@@ -144,16 +153,19 @@ public class RockActivity extends ParentActivity {
 		  dialog.setContentView(R.layout.upgrade_dialog);
 		  dialog.setCancelable(true);
 		  
-		  Button poss1 = (Button) dialog.findViewById(R.id.poss1);
-		  Button poss2 = (Button) dialog.findViewById(R.id.poss2);
+		  double cena = miner.University.Pickaxe.UpgradeCost(miner.University.Pickaxe.getLeavel()+1);
+		  
+		  UpdateDialogInit("PickAxe", "tu jakis String", cena, "+GpC \r\n+CD", "- CD");
+		  
+		  
 		  poss1.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				double cena = miner.University.Pickaxe.UpgradeCost(miner.University.Pickaxe.getLeavel()+1);
-
-		    	if(miner.Capitol.Currency.Amount >= cena)
+		    	
+				if(miner.Capitol.Currency.Amount >= cena)
 		    	{
 		    		miner.Capitol.Currency.Amount -= cena;
 		    		miner.University.Pickaxe.Upgrade(1);
@@ -176,25 +188,137 @@ public class RockActivity extends ParentActivity {
 		    	}
 		    	else Toast.makeText(getApplicationContext(), "Brak surowców!", Toast.LENGTH_LONG).show();
 		    	dialog.cancel();
-				
 			}
 		});
 		  
-		  dialog.show();
+		dialog.show();
 		
-    	
-    	
-    	
-    	
     }
     
     public void WorkerUpgradeClick(View v) // upgrade workera
     {
     	if(miner.University.Worker == null) miner.University.Worker = new Worker();
     	
-    	miner.Capitol.Income.Amount += miner.University.Worker.Upgrade();
-    	Button but = (Button) findViewById(R.id.workerUpgradeBTN);
-    	but.setText("worker lvl: " + miner.University.Worker.getLeavel());
+    	
+    	dialog = new Dialog(RockActivity.this);
+
+		  dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+		  dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		  dialog.setContentView(R.layout.upgrade_dialog);
+		  dialog.setCancelable(true);
+		  
+		  double cena = miner.University.Worker.UpgradeCost(miner.University.Worker.getLeavel()+1);
+		  
+		  UpdateDialogInit("Worker", "tu jakis String", cena, "+ Income", "+10% DoubleChance");
+
+		  
+		  poss1.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				double cena = miner.University.Worker.UpgradeCost(miner.University.Worker.getLeavel()+1);
+		    	
+				if(miner.Capitol.Currency.Amount >= cena)
+		    	{
+		    		miner.Capitol.Currency.Amount -= cena;
+		    		miner.Capitol.Income.Amount -= miner.University.Worker.Income;
+		    		miner.University.Worker.Upgrade(1);
+		    		miner.Capitol.Income.Amount += miner.University.Worker.Income;
+		    	}
+		    	else Toast.makeText(getApplicationContext(), "Brak surowców!", Toast.LENGTH_LONG).show();
+		    	dialog.cancel();
+		    	
+		    	Button but = (Button) findViewById(R.id.workerUpgradeBTN);
+		    	but.setText("worker lvl: " + miner.University.Worker.getLeavel());
+			}
+		});
+		  
+		  poss2.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				double cena = miner.University.Worker.UpgradeCost(miner.University.Worker.getLeavel()+1);
+
+		    	if(miner.Capitol.Currency.Amount >= cena)
+		    	{
+		    		miner.Capitol.Currency.Amount -= cena;
+		    		miner.Capitol.Income.Amount -= miner.University.Worker.Income;
+		    		miner.University.Worker.Upgrade(2);
+		    		miner.Capitol.Income.Amount += miner.University.Worker.Income;
+		    	}
+		    	else Toast.makeText(getApplicationContext(), "Brak surowców!", Toast.LENGTH_LONG).show();
+		    	dialog.cancel();
+		    	
+		    	Button but = (Button) findViewById(R.id.workerUpgradeBTN);
+		    	but.setText("worker lvl: " + miner.University.Worker.getLeavel());
+			}
+		});
+		  
+		dialog.show();
+    }
+    
+    public void WellUpgradeClick(View v) // upgrade pseudo studni
+    {
+    	if(miner.University.Well == null) miner.University.Well = new Well();
+    	
+    	
+    	dialog = new Dialog(RockActivity.this);
+
+		  dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+		  dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		  dialog.setContentView(R.layout.upgrade_dialog);
+		  dialog.setCancelable(true);
+		  
+		  double cena = miner.University.Well.UpgradeCost(miner.University.Well.getLeavel()+1);
+		  
+		  UpdateDialogInit("Well", "tu jakis String", cena, "+ Income", "-10% Rapture Chance");
+
+		  
+		  poss1.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				double cena = miner.University.Well.UpgradeCost(miner.University.Well.getLeavel()+1);
+		    	
+				if(miner.Capitol.Currency.Amount >= cena)
+		    	{
+		    		miner.Capitol.Currency.Amount -= cena;
+		    		miner.Capitol.Income.Amount -= miner.University.Well.Income;
+		    		miner.University.Well.Upgrade(1);
+		    		miner.Capitol.Income.Amount += miner.University.Well.Income;
+		    	}
+		    	else Toast.makeText(getApplicationContext(), "Brak surowców!", Toast.LENGTH_LONG).show();
+		    	dialog.cancel();
+		    	
+		    	Button but = (Button) findViewById(R.id.workerUpgradeBTN);
+		    	but.setText("Well lvl: " + miner.University.Well.getLeavel());
+			}
+		});
+		  
+		  poss2.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				double cena = miner.University.Worker.UpgradeCost(miner.University.Worker.getLeavel()+1);
+
+		    	if(miner.Capitol.Currency.Amount >= cena)
+		    	{
+		    		miner.Capitol.Currency.Amount -= cena;
+		    		miner.Capitol.Income.Amount -= miner.University.Worker.Income;
+		    		miner.University.Worker.Upgrade(2);
+		    		miner.Capitol.Income.Amount += miner.University.Worker.Income;
+		    	}
+		    	else Toast.makeText(getApplicationContext(), "Brak surowców!", Toast.LENGTH_LONG).show();
+		    	dialog.cancel();
+		    	
+		    	Button but = (Button) findViewById(R.id.workerUpgradeBTN);
+		    	but.setText("worker lvl: " + miner.University.Worker.getLeavel());
+			}
+		});
+		  
+		dialog.show();
     }
     
     public void setGoldValues()  // wypisywanie na gorej belce aktualnego stanu dubr doczesnych
@@ -221,7 +345,7 @@ public class RockActivity extends ParentActivity {
     public void FillRightLayout() // wypelnianie prawej czesci
     {
     	TextView tv = (TextView) findViewById(R.id.NameTV);
-    	miner.Name ="jarek";
+    	
         tv.setText(miner.Name);
         
         double cena = miner.University.Pickaxe.UpgradeCost(miner.University.Pickaxe.getLeavel()+1);

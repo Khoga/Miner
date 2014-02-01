@@ -25,7 +25,11 @@ public class ParentActivity extends Activity
 	private Obliczenia obliczenia;
 	private Timer AutoSaveTimer;
 	private Timer AutoConvertIncomeToGoldTimer;
-	private static String VALUES = "VALUES";
+	public double currentGold;
+	public double incomeGold;
+	public double currentPremium;
+	public double incomePremium;
+	public static String VALUES = "VALUES";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +53,10 @@ public class ParentActivity extends Activity
 		if(miner != null)
 		{	
 			AutoSave();
-			
 			AutoConvertIncomeToGold();
 		}
 	}
+
 	
 	public void AutoConvertIncomeToGold()
 	{
@@ -61,12 +65,30 @@ public class ParentActivity extends Activity
 			
 			@Override
 			public void run() {
-
+				
+				if(miner.University.Worker == null)
+					miner.Capitol.Currency.Amount += miner.University.Worker.WorkerDoubleChance()/10;
+				if(miner.University.Well == null)
+					miner.Capitol.Currency.Amount -= miner.University.Well.RaptureChance()/10;
+				
 				miner.Capitol.Currency.Amount += miner.Capitol.Income.Amount / 10;
 				miner.Capitol.PremiumCurrency.Amount += miner.Capitol.PremiumIncome.Amount / 10;
 			}
 		}, 1, 100);
 	}
+	
+    public void LoadValues()  //pobieranie wszystkich potrzebnych wartosci z Minera
+    {
+    	currentGold = miner.Capitol.Currency.Amount;
+    	incomeGold = miner.Capitol.Income.Amount ;
+    	currentPremium = miner.Capitol.PremiumCurrency.Amount;
+    	incomePremium = miner.Capitol.PremiumIncome.Amount;
+    	
+    	currentGold = obliczenia.round(currentGold, 2);
+    	incomeGold = obliczenia.round(incomeGold, 2);
+    	currentPremium = obliczenia.round(currentPremium, 2);
+    	incomePremium = obliczenia.round(incomePremium, 2);
+    }
 	
 	private void sendBroadcast()  // TODO
 	{
@@ -99,16 +121,15 @@ public class ParentActivity extends Activity
 				gson = new Gson();
 			    String json = gson.toJson(miner);
 			    editor.putString("Miner", json);
-			    editor.commit();
-			    
-				
+			    editor.commit();	
 			}
 		}, 1, 1000);
 		
 	}
 	
 	@Override
-	protected void onStop() {
+	protected void onStop() 
+	{
 		Log.i("cykl Parent", "onStop");
 		super.onStop();
 	}

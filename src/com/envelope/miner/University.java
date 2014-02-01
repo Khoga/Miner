@@ -7,12 +7,15 @@ public class University {
     public Rock Rock;
     public Pickaxe Pickaxe;
     public Worker Worker;
+    public Well Well;
+    
 
     public University()
     {
         Rock = new Rock();
         Pickaxe = new Pickaxe();
         Worker = new Worker();   // przy tworzeniu minera beda tworzyæ sie wszystkie budynki, ale z lvl 0
+        Well = new Well();
         Level = 1;
     }
 
